@@ -5,7 +5,7 @@ import { FilterButton } from '@/components/FilterButton';
 import { CardServico } from '@/components/ServiceCard';
 import Input from '@/components/Input/input';
 
-export default function ScreenServicos({ goBack }: any) {
+export default function ScreenServicos({ goToConfiguracoes }: any) {
   const data = [
     { id: '1', nome: 'Max', proprietario: 'Ricardo Silva', saida: '10h30', servico: 'BT' },
     { id: '2', nome: 'Max', proprietario: 'Ricardo Silva', saida: '10h30', servico: 'BT' },
@@ -30,7 +30,7 @@ export default function ScreenServicos({ goBack }: any) {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => <CardServico item={item} />}
       />
-      <AppButton onPress={goBack}>Voltar</AppButton>
+      <AppButton onPress={goToConfiguracoes}>Configuracoes</AppButton>
     </View>
   );
 }
