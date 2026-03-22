@@ -1,14 +1,18 @@
-import { ScreenContent } from 'components/ScreenContent';
-import { StatusBar } from 'expo-status-bar';
-
+import { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import './global.css';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+import ScreenLogin from '@/screens/Login';
+import ScreenServicos from '@/screens/Servicos';
 
 export default function App() {
+  const [screen, setScreen] = useState<'login' | 'servicos'>('login');
+
   return (
-    <SafeAreaProvider>
-      <ScreenContent title="Home" path="App.tsx"></ScreenContent>
-      <StatusBar style="auto" />
-    </SafeAreaProvider>
+    <SafeAreaView className="flex-1">
+      {screen === 'login' && <ScreenLogin goToServicos={() => setScreen('servicos')} />}
+
+      {screen === 'servicos' && <ScreenServicos goBack={() => setScreen('login')} />}
+    </SafeAreaView>
   );
 }
